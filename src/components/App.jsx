@@ -30,11 +30,7 @@ export const App = () => {
       alert(`Contact ${contact.name} is already exist!`);
       return;
     }
-    // const newContact = {
-    //   id: nanoid(),
-    //   name,
-    //   number,
-    // };
+
     setContacts(prevContacts => [
       ...prevContacts,
       { id: nanoid(), ...contact },
@@ -52,8 +48,9 @@ export const App = () => {
   };
 
   const deleteContact = id => {
-    const updatedContacts = contacts.filter(contact => contact.id !== id);
-    setContacts(updatedContacts);
+    setContacts(prevContacts =>
+      prevContacts.filter(contact => contact.id !== id)
+    );
   };
 
   return (
